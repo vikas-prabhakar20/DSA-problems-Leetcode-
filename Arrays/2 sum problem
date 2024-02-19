@@ -1,0 +1,32 @@
+//return indices of the two numbers such that they add up to target
+
+//BRUTE FORCE
+vector<int> twoSum(vector<int>& nums, int target) {
+        for (int i = 0; i < nums.size(); i++) {
+            for (int j = i + 1; j < nums.size(); j++) {
+                if (nums[i] + nums[j] == target) {
+                    return {i, j};
+                }
+            }
+        }
+        return {};
+    }
+
+
+//optimized
+vector<int> twoSum(vector<int>& nums, int target) {
+        //store nums and indices
+        unordered_map<int, int> mp;
+
+        for(int i=0; i<nums.size(); i++){
+        //check if the complement of curr num exists in map
+            if(mp.find(target-nums[i])==mp.end())
+            //if not, add curr num in map
+                mp[nums[i]]=i;
+            else
+            //if yes, return the indices of the current number and its complement
+                return {mp[target-nums[i]],i};
+        }
+        //if no pair is found
+        return {-1, -1};
+      }
