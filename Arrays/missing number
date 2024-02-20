@@ -1,0 +1,13 @@
+//optimized soln 
+//actual_sum - sum = missing num
+
+int missingNumber(vector<int>& nums) {
+        int n=nums.size();
+        int actual_sum=(n*(n+1))/2;
+        int sum=0;
+        for(int i=0; i<n; i++)
+            sum+=nums[i];
+
+        int miss_num=actual_sum-sum;
+        return miss_num;
+    }
